@@ -406,7 +406,56 @@ def check_attendance_percentage(students):
       if "attendance" not in student:
             print("\nNo Attendance Record Available.")
             return
+
+      attendance = student["attendance"]
+
+      if len(attendance) == 0:
+            print("\nNo Attendance records avaialble.")
+            return
+
+      total_classes_all = 0
+      attended_classes_all = 0
+
+      print("\nAttendance Records")
+      print("-"*60)
+
+      for semester, data in attendance.items():
+
+            total_classes = data["total_classes"]
+            attended_classes = data["attended_classes"]
+
+            percentage = caluclate_attendance_percentage(
+                  total_classes,
+                  attended_classes
+            )
+
+            print(f"Semester{semester}")
+            print(f"Total: {total_classes}")
+            print(f"Classes Attended: {attended_classes}")
+            print(f"Attendance   :  {percentage: .2f}%")
+            print("="*60)
+
+            total_classes_all += total_classes
+            attended_classes_all += attended_classes
+
+      overall_percentage = caluclate_attendance_percentage(
+            total_classes_all,
+            attended_classes_all
+      )
+      print("\nOVERALL ATTENDANCE")
+
+      print("-" * 60) 
+      print("Total Classes :", total_classes_all) 
+      print("Classes Attended :", attended_classes_all)
+      print(f"Attendance : {overall_percentage:.2f}%")
+
+      print("="*60)
       
+
+
+
+
+
 
 
 
