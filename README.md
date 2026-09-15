@@ -202,9 +202,9 @@ Database integration
 Object-Oriented Programming
 Authentication and user accounts
 
-##👨‍💻 Author 
+👨‍💻 Author 
 
 
-**Mohammad Tausif**
+Mohammad Tausif
 
 Built as a Python learning project to practice fundamental programming concepts and develop a practical, larger-scale application.
