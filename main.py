@@ -451,7 +451,76 @@ def check_attendance_percentage(students):
 
       print("="*60)
       
-      
+#                       =========================================================================
+
+#                                               ENTER MARKS FOR NEW SEMESTER
+
+#                       =========================================================================
+
+def enter_new_semester_marks(students):
+
+      print("\n")
+      print("="*60)
+      print("                            ENTER NEW SEMESTER MARKS")
+      print("=" * 60)
+
+      roll_number = get_roll_number()
+
+      student = find_student(students,roll_number)
+
+      if student is None:
+            print("\n Student Not Found.")
+            return
+      display_student_basic_information(student)
+
+      semester = input("\nEnter New Semester Marks: ")
+
+      if "semesters" not in student:
+            student["semesters"] ={}
+
+      if semester in student["semesters"]:
+            print("\nThis Semester Already Exists.")
+
+            choice = input("\n Do you want to overwrite it? (yes/no): ")
+
+            if choice.lower() != "yes":
+                  print("Operation cancelled.")
+                  return
+
+      subjects = [
+            "English",
+            "Mathematics",
+            "Science & Technology",
+            "Social Science",
+            "Hindi"
+      ]
+      new_marks ={}
+      print("\nEnter Marks Out Of 100.")
+
+      for subject in subjects:
+            while True:
+                  try:
+                        score = float(input(f"Enter marks for {subject}: "))
+                        if score < 0 or score > 100:
+                              print("\nMarks Must Be Between 0 & 100")
+
+                        else:
+                              new_marks[subject] = score
+                              break
+                  except ValueError:
+                        print("\n Please Enter A Valid Number.")
+
+      student["semesters"][semester] = { "marks": new_marks }    
+
+      save_students(students)
+      print("\nNew semester marks registered successfully!")
+
+#                 ============================================================    
+    
+#                                   DISPLAY ALL SEMESTERS
+              
+#                 ============================================================    
+        
 
 
 
