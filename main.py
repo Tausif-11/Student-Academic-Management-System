@@ -521,8 +521,53 @@ def enter_new_semester_marks(students):
               
 #                 ============================================================    
         
+def display_all_semesters(student):
+      print("\n")
+      print("="*60)
+      print("                           SEMESTER RECORDS")
+      print("="*60)
 
+      # ------------------------------------------
+               # ORIGINAL MARKS
+      # ------------------------------------------
 
+      print("\n Semester 1")
+      print("-"*60)
+      marks = student["marks"]
+
+      for subject, score in marks.item():
+            print(f"{subject:<25} : {score}")
+
+      total = calculate_total(marks)
+      percentage = calculate_percentage(marks)
+
+      print(f"{'Total':<25} : {total}") 
+      print(f"{'Percentage':<25} : {percentage:.2f}%") 
+      print(f"{'Grade':<25} : {calculate_grade(percentage)}")
+
+      # -------------------------------------------------------- 
+      #  New semesters  
+      # --------------------------------------------------------
+
+      if "semesters" in student:
+
+            for semester, semester_data in student["semesters"].items():
+                  print("\nSEMESTER", semester)
+                  print("-"*60)
+
+                  marks = semester_data["marks"]
+
+                  for subject, score in marks.items():
+                        print(f"{subject:<25}: {score}")
+
+                  total= calculate_total(marks)
+                  percentage = calculate_percentage(marks)
+
+                  print(f"{'Total':<25}:{total}")
+                  print(f"{'Percentage':<25} : {percentage:.2f}%") 
+                  print(f"{'Grade':<25} : {calculate_grade(percentage)}")
+
+      print("=" * 60)
 
 
 
