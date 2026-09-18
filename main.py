@@ -569,6 +569,77 @@ def display_all_semesters(student):
 
       print("=" * 60)
 
+            #  ============================================================
+
+                        # CALCULATE SEMESTER PERCENTAGE
+
+            # ============================================================
+
+def calculate_semester_percentage_menu(students ):
+      print('\n')
+      print("="*60)
+      print("                             SEMESTER PERCENTAGE")
+      print("="*60)
+
+      roll_number = get_roll_number
+      student = find_student(students, roll_number)
+
+      if student is None:
+            print("\nStudent Not Found.")
+            return
+
+      display_student_basic_information(student)
+
+      print("\nAvailable Semester:")
+      print("1. Semester 1")
+
+      if "semesters" in student:
+
+            for semester in student["semesters"]:
+                  print("2.", semester)
+
+      semester_choice = input("\nEnter Semester: ")
+
+# ----------------------------------
+# SEMESTER 1
+# -----------------------------------
+
+      if semester_choice == "1":
+
+            marks = student["marks"]
+
+            total = calculate_total(marks)
+            percentage = calculate_percentage(marks)
+            grade = calculate_grade(marks)
+
+            print("\nSemester 1 Results")
+            print("-" * 60) 
+            print("Total :", total)
+            print(f"Percentage : {percentage:.2f}%") 
+            print("Grade :", grade)
+
+            # --------------------------------------------------------  
+            # Other Semesters 
+            # -------------------------------------------------------- 
+      elif "semesters" in student and semester_choice in student["semesters"]: 
+            marks = student["semesters"][semester_choice]["marks"] 
+            total = calculate_total(marks) 
+            percentage = calculate_percentage(marks) 
+            grade = calculate_grade(percentage)
+            print(f"\nSemester {semester_choice} Result") 
+            print("-" * 60) 
+            print("Total :", total) 
+            print(f"Percentage : {percentage:.2f}%") 
+            print("Grade :", grade) 
+
+      else: 
+            print("\nSemester not found.")
+            print("=" * 60)
+
+
+
+
+
 
 
 
